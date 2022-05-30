@@ -1,0 +1,11 @@
+#Application Configuration
+server:
+  port: 8083
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
+spring:
+  application:
+    name: eureka-server

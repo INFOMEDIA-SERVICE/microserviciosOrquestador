@@ -1,0 +1,11 @@
+#Application Configuration
+server:
+  port: 8081
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhos:8083/eureka
+    instance:
+      hostname: localhost

@@ -1,0 +1,107 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: infomediaservice_gateway-application
+  cloud:
+    gateway:
+      routes:
+        - id: infomediaservice_login-server
+          uri: lb://infomediaservice_login-application
+          predicates:
+            - Path=//api/v1/signin/**
+            - Method=GET, POST
+          filters:
+            - StripPrefix=2
+            - EjemploCookie=Hola mi mensaje personalizado, usuario, Manuel
+        - id: infomediaservice_signatures-server
+          uri: lb://infomediaservice_signatures-application
+          predicates:
+            - Path=//api/v1/signatures/**
+          filters:
+            - StripPrefix=2
+            - AddResquestHeader=token-request, 123456
+            - AddResponseHeader=token-response, 12345678
+            - AddResquestParameter=nombre, andres
+        - id: infomediaservice_vuplaform-application
+          uri: lb://infomediaservice_vuplaform-application
+          predicates:
+            - Path=//api/v1/vuplaform/**
+          filters:
+            - StripPrefix=2
+            - name: CircuitBreacker
+              args:
+                name: vuplaform
+                statusCodes: 500
+                fallbackUri: forward:/api/v1/vuplaform
+                ##servicio alternativo puede ser un tema de trata de errores
+
+
+
+
+
+      #profiles:
+      #active: "@profile.active@"
+
+      #cloud:
+      #config:
+      #fail-fast: true
+      #retry:
+    #initial-interval: 1000
+    #max-attempts: 20
+    #multiplier: 1.3
+    #max-interval: 2000
+
+    #uri: http://localhost:8888 #"@config.server.url@"
+    #username: "@config.server.user.name@"
+    #password: "@config.server.user.pass@"
+---
+
+#spring:
+#profiles: local, development-docker
+
+#boot:
+#admin:
+#client:
+#url: "@admin.server.url@"
+#username: "@admin.server.user.name@"
+#password: "@admin.server.user.pass@"
+
+#cloud:
+# kubernetes:
+#  enabled: false
+# ribbon:
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance-id:
+    ${spring.application.name}:
+      ${spring.application.instance_id: ${random.value}
+
+  main:
+    allow-bean-definition-overriding: true
+
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      defecto:
+        sliding-window-size: 6
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 4
+        slow-call-rate-threshold: 50
+        slow-call-duration-threshold: 2s
+    instances:
+      vuplaform: ##nombre que le ponemos a la configuracion y lo ponemos en el controlador
+        base-config: defecto
+  timelimiter:
+    configs:
+      defecto:
+        timeout-duration: 6s
+    instances:
+      vuplaform:
+        base-config: defecto
