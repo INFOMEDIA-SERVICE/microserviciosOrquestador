@@ -6,12 +6,11 @@ spring:
   config:
     name: config-server
 
-
   cloud:
     config:
       server:
         git:
           uri: ${AC_CONFIG_SERVICE_GIT_REMOTE_URI}
           default-label: "master"
-          search-paths: "config-data"
+          search-paths: "config-data/local"
           clone-on-start: true
