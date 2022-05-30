@@ -9,24 +9,8 @@ spring:
         max-attempts: 20
         multiplier: 1.3
         max-interval: 2000
-      uri: http://localhost:8888
+      uri: "http://localhost:8888"
 
-      #profiles:
-      #active: "@profile.active@"
-
-      #cloud:
-      #config:
-      #fail-fast: true
-      #retry:
-    #initial-interval: 1000
-    #max-attempts: 20
-    #multiplier: 1.3
-    #max-interval: 2000
-
-  #uri: http://localhost:8888 #"@config.server.url@"
-    #username: "@config.server.user.name@"
-    #password: "@config.server.user.pass@"
----
 
 #spring:
 #profiles: local, development-docker

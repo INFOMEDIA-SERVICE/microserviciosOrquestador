@@ -14,3 +14,12 @@ spring:
           default-label: "develop"
           search-paths: "config-data/local"
           clone-on-start: true
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhos:8761/eureka
+    instance-id:
+      ${spring.application.name}:
+        ${spring.application.instance_id: ${random.value}}
