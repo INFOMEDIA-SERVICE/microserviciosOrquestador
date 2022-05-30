@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  #port: 8888
 spring:
   application:
     name: infomediaservice_gateway-application
@@ -31,9 +31,9 @@ spring:
             - StripPrefix=2
             - name: CircuitBreacker
               args:
-                name: vuplaform
-                statusCodes: 500
-                fallbackUri: forward:/api/v1/vuplaform
+               # name: vuplaform
+                #statusCodes: 500
+                #fallbackUri: forward:/api/v1/vuplaform
                 ##servicio alternativo puede ser un tema de trata de errores
 
 
@@ -52,7 +52,7 @@ spring:
     #multiplier: 1.3
     #max-interval: 2000
 
-    #uri: http://localhost:8888 #"@config.server.url@"
+  #uri: http://localhost:8888 #"@config.server.url@"
     #username: "@config.server.user.name@"
     #password: "@config.server.user.pass@"
 ---
