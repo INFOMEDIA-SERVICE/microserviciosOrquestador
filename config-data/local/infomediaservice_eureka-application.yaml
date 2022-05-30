@@ -1,6 +1,6 @@
 #Application Configuration
 server:
-  port: 8083
+  port: 8761
 eureka:
   client:
     fetch-registry: false

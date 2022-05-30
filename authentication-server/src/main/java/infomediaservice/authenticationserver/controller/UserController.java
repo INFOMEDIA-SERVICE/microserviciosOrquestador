@@ -2,6 +2,7 @@ package infomediaservice.authenticationserver.controller;
 
 import infomediaservice.authenticationserver.entity.User;
 import infomediaservice.authenticationserver.service.UserService;
+import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
 
     @GetMapping
     public ResponseEntity<List<User>> listUsers() {
@@ -32,6 +34,7 @@ public class UserController {
         }
         return ResponseEntity.ok(user);
     }
+
 
     @PostMapping
     public ResponseEntity<User> newUser(@RequestBody User user) {
