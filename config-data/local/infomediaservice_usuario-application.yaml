@@ -40,3 +40,8 @@ resilience4j:
     instances:
       informationContro:
         base-config: defecto
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
