@@ -25,6 +25,14 @@ spring:
           filters:
             - StripPrefix=3
             - EjemploCookie=Hola mi mensaje personalizado, usuario, Manuel
+        - id: usuario-server
+          uri: lb://usuario-server
+          predicates:
+            - Path=/api/v1/users/**
+            - Method=GET, POST
+          filters:
+            - StripPrefix=3
+            - EjemploCookie=Hola mi mensaje personalizado, usuario, Manuel
         - id: infomediaservice_usuario-application
           uri: lb://infomediaservice_usuario-application
           predicates:
