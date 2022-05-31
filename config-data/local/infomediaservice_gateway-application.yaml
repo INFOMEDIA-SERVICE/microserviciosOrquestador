@@ -1,4 +1,5 @@
 #Application Configuration
+#port: ${PORT:0}
 server:
   port: 8080
 eureka:
@@ -45,7 +46,9 @@ spring:
                 statusCodes: 500
                 fallbackUri: forward:/api/v1/vuplaform
                 #servicio alternativo puede ser un tema de trata de errores
-#port: ${PORT:0}
+  sleuth:
+    sampler:
+      probability: 1.0
 
 
 resilience4j:

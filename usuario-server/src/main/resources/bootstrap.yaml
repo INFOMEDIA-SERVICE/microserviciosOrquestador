@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: infomediaservice_usuario-application
+  config:
+    import=optional: config-server
+
+  cloud:
+    config:
+      fail-fast: true
+      retry:
+        initial-interval: 1000
+        max-attempts: 20
+        multiplier: 1.3
+        max-interval: 2000
+    uri: http://localhost:8888
+
+
+      #main:
+      #allow-bean-definition-overriding: true
+
+      #profiles:
+      #active: "@profile.active@"
+
+
+
+
+---
+
+#spring:
+#profiles: local, development-docker
+
+#boot:
+#admin:
+#client:
+#url: "@admin.server.url@"
+#username: "@admin.server.user.name@"
+#password: "@admin.server.user.pass@"
+
+#cloud:
+# kubernetes:
+#  enabled: false
+# ribbon:
+

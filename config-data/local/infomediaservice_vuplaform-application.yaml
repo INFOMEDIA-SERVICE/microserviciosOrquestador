@@ -11,5 +11,10 @@ eureka:
       ${spring.application.name}:
         ${spring.application.instance_id: ${random.value}}
 
+spring:
+  sleuth:
+    sampler:
+      probability: 1.0
+    base-url: http://localhost:9411/
 
 #port: ${PORT:0}
