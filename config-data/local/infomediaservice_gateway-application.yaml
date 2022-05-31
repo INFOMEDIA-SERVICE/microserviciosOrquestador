@@ -23,7 +23,7 @@ spring:
             - Path=//api/v1/oauth/**
             - Method=GET, POST
           filters:
-            - StripPrefix=2
+            - StripPrefix=3
             - EjemploCookie=Hola mi mensaje personalizado, usuario, Manuel
         - id: infomediaservice_usuario-application
           uri: lb://infomediaservice_usuario-application
@@ -31,14 +31,14 @@ spring:
             - Path=//api/v1/usuarios/**
             - Method=GET, POST
           filters:
-            - StripPrefix=2
+            - StripPrefix=3
             - EjemploCookie=Hola mi mensaje personalizado, usuario, Manuel
         - id: infomediaservice_signatures-server
           uri: lb://infomediaservice_signatures-application
           predicates:
             - Path=//api/v1/signatures/**
           filters:
-            - StripPrefix=2
+            - StripPrefix=3
             - AddResquestHeader=token-request, 123456
             - AddResponseHeader=token-response, 12345678
             - AddResquestParameter=nombre, andres
@@ -47,7 +47,7 @@ spring:
           predicates:
             - Path=//api/v1/vuplaform/**
           filters:
-            - StripPrefix=2
+            - StripPrefix=3
             - name: CircuitBreacker
               args:
                 name: vuplaform
