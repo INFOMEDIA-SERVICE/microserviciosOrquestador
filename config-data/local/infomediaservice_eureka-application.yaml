@@ -9,3 +9,6 @@ eureka:
 spring:
   application:
     name: eureka-server
+  sleuth:
+    sampler:
+      probability: 1.0

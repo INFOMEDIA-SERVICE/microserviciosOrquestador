@@ -1,0 +1,42 @@
+#Application Configuration
+server:
+  port: 8091
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhos:8761/eureka
+    instance-id:
+      ${spring.application.name}:
+        ${spring.application.instance_id: ${random.value}}
+
+spring:
+  sleuth:
+    sampler:
+      probability: 1.0
+    base-url: http://localhost:9411/
+
+#port: ${PORT:0}
+
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      defecto:
+        sliding-window-size: 6
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 4
+        slow-call-rate-threshold: 50
+        slow-call-duration-threshold: 2s
+    instances:
+      informationContro: ##nombre que le ponemos a la configuracion y lo ponemos en el controlador
+        base-config: defecto
+  timelimiter:
+    configs:
+      defecto:
+        timeout-duration: 6s
+    instances:
+      informationContro:
+        base-config: defecto

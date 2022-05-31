@@ -5,6 +5,9 @@ spring:
     name: config-server
   config:
     name: config-server
+  sleuth:
+    sampler:
+      probability: 1.0
 
   cloud:
     config:

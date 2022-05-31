@@ -10,3 +10,8 @@ eureka:
     instance-id:
       ${spring.application.name}:
         ${spring.application.instance_id: ${random.value}}
+
+spring:
+  sleuth:
+    sampler:
+      probability: 1.0
