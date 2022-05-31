@@ -20,7 +20,15 @@ spring:
         - id: infomediaservice_login-server
           uri: lb://infomediaservice_login-application
           predicates:
-            - Path=//api/v1/signin/**
+            - Path=//api/v1/oauth/**
+            - Method=GET, POST
+          filters:
+            - StripPrefix=2
+            - EjemploCookie=Hola mi mensaje personalizado, usuario, Manuel
+        - id: infomediaservice_usuario-application
+          uri: lb://infomediaservice_usuario-application
+          predicates:
+            - Path=//api/v1/usuarios/**
             - Method=GET, POST
           filters:
             - StripPrefix=2

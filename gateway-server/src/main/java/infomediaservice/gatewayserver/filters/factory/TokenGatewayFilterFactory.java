@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.OrderedGatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.ResponseCookie;
 import reactor.core.publisher.Mono;
 
