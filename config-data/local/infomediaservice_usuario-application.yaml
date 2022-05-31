@@ -45,3 +45,14 @@ logging:
     org:
       hibernate:
         SQL: debug
+
+  config:
+    security:
+      oauth:
+        client:
+          id: frontendapp
+          secret: 12345
+          scope: information-resource-read
+          grantype: client_credentials
+        jwt:
+          key: algun_codigo_secreto_aeiou
