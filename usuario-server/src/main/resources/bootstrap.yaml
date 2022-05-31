@@ -3,7 +3,6 @@ spring:
     name: infomediaservice_usuario-application
   config:
     import=optional: config-server
-
   cloud:
     config:
       fail-fast: true
