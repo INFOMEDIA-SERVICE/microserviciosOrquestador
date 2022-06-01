@@ -43,11 +43,6 @@ spring:
             - Path=/api/v1/vuplaform/**
           filters:
             - StripPrefix=3
-            - name: CircuitBreacker
-              args:
-                name: vuplaform
-                statusCodes: 500
-                fallbackUri: forward:/api/v1/vuplaform
                 #servicio alternativo puede ser un tema de trata de errores
   sleuth:
     sampler:
