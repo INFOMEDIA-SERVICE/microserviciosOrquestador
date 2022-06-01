@@ -17,15 +17,15 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: infomediaservice_login-server
-          uri: lb://infomediaservice_login-application
+        - id: authentication-server
+          uri: lb://authentication-server
           predicates:
             - Path=/api/v1/oauth/**
             - Method=GET, POST
           filters:
             - StripPrefix=3
         - id: usuario-server
-          uri: lb://infomediaservice_usuario-application
+          uri: lb://usuario-application
           predicates:
             - Path=/api/v1/usuarios/**
             - Method=GET, POST
