@@ -9,17 +9,17 @@ spring:
         - id: authentication-server
           uri: lb://authentication-server
           predicates:
-            - Path=/api/v1/oauth/**
+            - Path=/api/v1/security/**
             - Method=GET, POST
           filters:
             - StripPrefix=3
         - id: usuario-server
           uri: lb://usuario-server
           predicates:
-            - Path=/api/v1/user**
+            - Path=/api/v1/user/**
             - Method=GET, POST
           filters:
-            - StripPrefix=2
+            - StripPrefix=3
         - id: signatures-server
           uri: lb://signatures-server
           predicates:
