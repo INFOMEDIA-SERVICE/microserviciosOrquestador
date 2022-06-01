@@ -1,6 +1,6 @@
 spring:
   application:
-    name: infomediaservice_gateway-application
+    name: gateway-server
   config:
     import=optional: config-server
   cloud:

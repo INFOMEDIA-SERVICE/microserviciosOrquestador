@@ -25,20 +25,20 @@ spring:
           filters:
             - StripPrefix=3
         - id: usuario-server
-          uri: lb://usuario-application
+          uri: lb://usuario-server
           predicates:
             - Path=/api/v1/usuarios/**
             - Method=GET, POST
           filters:
             - StripPrefix=3
-        - id: infomediaservice_signatures-server
-          uri: lb://infomediaservice_signatures-application
+        - id: signatures-server
+          uri: lb://signatures-server
           predicates:
             - Path=/api/v1/signatures/**
           filters:
             - StripPrefix=3
-        - id: infomediaservice_vuplaform-application
-          uri: lb://infomediaservice_vuplaform-application
+        - id: vuplaform-server
+          uri: lb://vuplaform-server
           predicates:
             - Path=/api/v1/vuplaform/**
           filters:
