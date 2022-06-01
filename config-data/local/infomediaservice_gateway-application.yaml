@@ -6,58 +6,58 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: authentication-server
-        uri: lb://authentication-server
-        predicates:
-          - Path=/api/v1/oauth/**
-          - Method=GET, POST
-        filters:
-          - StripPrefix=3
-      - id: usuario-server
-        uri: lb://usuario-server
-        predicates:
-          - Path=/api/v1/**
-          - Method=GET, POST
-        filters:
-          - StripPrefix=3
-      - id: signatures-server
-        uri: lb://signatures-server
-        predicates:
-          - Path=/api/v1/signatures/**
-        filters:
-          - StripPrefix=3
-      - id: vuplaform-server
-        uri: lb://vuplaform-server
-        predicates:
-          - Path=/api/v1/vuplaform/**
-        filters:
-          - StripPrefix=3
-                #servicio alternativo puede ser un tema de trata de errores
+        - id: authentication-server
+          uri: lb://authentication-server
+          predicates:
+            - Path=/api/v1/oauth/**
+            - Method=GET, POST
+          filters:
+            - StripPrefix=3
+        - id: usuario-server
+          uri: lb://usuario-server
+          predicates:
+            - Path=/api/v1/**
+            - Method=GET, POST
+          filters:
+            - StripPrefix=2
+        - id: signatures-server
+          uri: lb://signatures-server
+          predicates:
+            - Path=/api/v1/signatures/**
+          filters:
+            - StripPrefix=3
+        - id: vuplaform-server
+          uri: lb://vuplaform-server
+          predicates:
+            - Path=/api/v1/vuplaform/**
+          filters:
+            - StripPrefix=3
+            #servicio alternativo puede ser un tema de trata de errores
   sleuth:
     sampler:
       probability: 1.0
 
 
-#resilience4j:
-  #circuitbreaker:
-    #configs:
-      #defecto:
+        #resilience4j:
+        #circuitbreaker:
+        #configs:
+        #defecto:
         #sliding-window-size: 6
         #failure-rate-threshold: 50
         #wait-duration-in-open-state: 20s
         #permitted-number-of-calls-in-half-open-state: 4
         #slow-call-rate-threshold: 50
         #slow-call-duration-threshold: 2s
-    #instances:
-      #vuplaform: ##nombre que le ponemos a la configuracion y lo ponemos en el controlador
+        #instances:
+        #vuplaform: ##nombre que le ponemos a la configuracion y lo ponemos en el controlador
         #base-config: defecto
-  #timelimiter:
-    #configs:
-      #defecto:
+        #timelimiter:
+        #configs:
+        #defecto:
         #timeout-duration: 6s
-    #instances:
-      #vuplaform:
-        #base-config: defecto
+        #instances:
+        #vuplaform:
+      #base-config: defecto
 eureka:
   client:
     fetch-registry: true
