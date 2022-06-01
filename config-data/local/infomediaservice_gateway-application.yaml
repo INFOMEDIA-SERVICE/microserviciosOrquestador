@@ -1,7 +1,7 @@
 #Application Configuration
 #port: ${PORT:0}
 server:
-  port: 8081
+  port: 8099
 eureka:
   client:
     fetch-registry: true
@@ -24,7 +24,6 @@ spring:
             - Method=GET, POST
           filters:
             - StripPrefix=3
-            - EjemploCookie=Hola mi mensaje personalizado, usuario, Manuel
         - id: infomediaservice_usuario-application
           uri: lb://infomediaservice_usuario-application
           predicates:
