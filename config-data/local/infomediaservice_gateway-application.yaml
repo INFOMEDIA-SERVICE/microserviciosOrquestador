@@ -31,16 +31,12 @@ spring:
             - Method=GET, POST
           filters:
             - StripPrefix=3
-            - EjemploCookie=Hola mi mensaje personalizado, usuario, Manuel
         - id: infomediaservice_signatures-server
           uri: lb://infomediaservice_signatures-application
           predicates:
             - Path=/api/v1/signatures/**
           filters:
             - StripPrefix=3
-            - AddResquestHeader=token-request, 123456
-            - AddResponseHeader=token-response, 12345678
-            - AddResquestParameter=nombre, andres
         - id: infomediaservice_vuplaform-application
           uri: lb://infomediaservice_vuplaform-application
           predicates:
