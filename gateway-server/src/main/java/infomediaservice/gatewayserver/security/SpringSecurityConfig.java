@@ -9,14 +9,14 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @EnableWebFluxSecurity
 public class SpringSecurityConfig {
-	
+
 	@Autowired
 	private JwtAuthenticationFilter authenticationFilter;
 
 	@Bean
 	public SecurityWebFilterChain configure(ServerHttpSecurity http) {
 		return http.authorizeExchange()
-				.pathMatchers("api/security/oauth/**").permitAll()
+				.pathMatchers("api/v1/**").permitAll()
 				.anyExchange().authenticated()
 				.and().addFilterAt(authenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)
 				.csrf().disable()
