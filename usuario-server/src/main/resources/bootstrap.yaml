@@ -1,6 +1,6 @@
 spring:
   application:
-    name: usuario-server
+    name: infomediaservice_usuario-application
   config:
     import=optional: config-server
   cloud:

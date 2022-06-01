@@ -4,7 +4,7 @@ eureka:
     fetch-registry: false
 spring:
   application:
-    name: eureka-server
+    name: infomediaservice_eureka-application
 
   main:
     allow-bean-definition-overriding: true
