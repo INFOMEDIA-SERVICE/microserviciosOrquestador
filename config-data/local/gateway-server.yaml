@@ -17,33 +17,13 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: infomediaservice_login-server
-          uri: lb://infomediaservice_login-application
-          predicates:
-            - Path=/api/v1/oauth/**
-            - Method=GET, POST
-          filters:
-            - StripPrefix=3
         - id: usuario-server
-          uri: lb://infomediaservice_usuario-application
+          uri: lb://usuario-server
           predicates:
             - Path=/api/v1/usuarios/**
             - Method=GET, POST
           filters:
             - StripPrefix=3
-        - id: infomediaservice_signatures-server
-          uri: lb://infomediaservice_signatures-application
-          predicates:
-            - Path=/api/v1/signatures/**
-          filters:
-            - StripPrefix=3
-        - id: infomediaservice_vuplaform-application
-          uri: lb://infomediaservice_vuplaform-application
-          predicates:
-            - Path=/api/v1/vuplaform/**
-          filters:
-            - StripPrefix=3
-                #servicio alternativo puede ser un tema de trata de errores
   sleuth:
     sampler:
       probability: 1.0
