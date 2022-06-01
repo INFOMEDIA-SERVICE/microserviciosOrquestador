@@ -14,7 +14,7 @@ spring:
       server:
         git:
           uri: ${AC_CONFIG_SERVICE_GIT_REMOTE_URI}
-          default-label: "develop"
+          default-label: "master"
           search-paths: "config-data/local"
           clone-on-start: true
 eureka:
