@@ -6,32 +6,32 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: authentication-server
-          uri: lb://authentication-server
-          predicates:
-            - Path=/api/v1/oauth/**
-            - Method=GET, POST
-          filters:
-            - StripPrefix=3
-        - id: usuario-server
-          uri: lb://usuario-server
-          predicates:
-            - Path=/api/v1/**
-            - Method=GET, POST
-          filters:
-            - StripPrefix=3
-        - id: signatures-server
-          uri: lb://signatures-server
-          predicates:
-            - Path=/api/v1/signatures/**
-          filters:
-            - StripPrefix=3
-        - id: vuplaform-server
-          uri: lb://vuplaform-server
-          predicates:
-            - Path=/api/v1/vuplaform/**
-          filters:
-            - StripPrefix=3
+      - id: authentication-server
+        uri: lb://authentication-server
+        predicates:
+          - Path=/api/v1/oauth/**
+          - Method=GET, POST
+        filters:
+          - StripPrefix=3
+      - id: usuario-server
+        uri: lb://usuario-server
+        predicates:
+          - Path=/api/v1/**
+          - Method=GET, POST
+        filters:
+          - StripPrefix=3
+      - id: signatures-server
+        uri: lb://signatures-server
+        predicates:
+          - Path=/api/v1/signatures/**
+        filters:
+          - StripPrefix=3
+      - id: vuplaform-server
+        uri: lb://vuplaform-server
+        predicates:
+          - Path=/api/v1/vuplaform/**
+        filters:
+          - StripPrefix=3
                 #servicio alternativo puede ser un tema de trata de errores
   sleuth:
     sampler:
