@@ -24,6 +24,13 @@ spring:
             - Method=GET, POST
           filters:
             - StripPrefix=3
+        - id: authentication-server
+          uri: lb://authentication-server
+          predicates:
+            - Path=/api/v1/security/**
+            - Method=GET, POST
+          filters:
+            - StripPrefix=3            
   sleuth:
     sampler:
       probability: 1.0

@@ -1,7 +1,8 @@
-package infomediaservice.gatewayserver.security;
+package com.formacionbdi.springboot.app.gateway.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
@@ -15,11 +16,16 @@ public class SpringSecurityConfig {
 
 	@Bean
 	public SecurityWebFilterChain configure(ServerHttpSecurity http) {
-		return http.authorizeExchange()
+		/*return http.authorizeExchange()
 				.pathMatchers("api/v1/**").permitAll()
 				.anyExchange().authenticated()
 				.and().addFilterAt(authenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)
 				.csrf().disable()
-				.build();
+				.build();*/
+		return http.authorizeExchange()
+				.pathMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
+				.anyExchange().authenticated()
+				.and().csrf().disable().build();
+		
 	}
 }

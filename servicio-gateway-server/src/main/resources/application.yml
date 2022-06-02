@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: usuario-server
+        uri: lb://usuario-server
+        predicates:          - Path=/api/v1/usuarios/**
+        filters:          - StripPrefix=3
+          - EjemploCookie=Hola mi mensaje personalizado, usuario, AndersonRamirez
+      
