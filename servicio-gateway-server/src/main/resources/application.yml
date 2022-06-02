@@ -7,4 +7,11 @@ spring:
         predicates:          - Path=/api/v1/usuarios/**
         filters:          - StripPrefix=3
           - EjemploCookie=Hola mi mensaje personalizado, usuario, AndersonRamirez
+      - id: authentication-server
+        uri: lb://authentication-server
+        predicates:
+          - Path=/api/v1/security/**
+          - Method=GET, POST
+        filters:
+          - StripPrefix=3   
       
