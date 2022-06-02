@@ -13,7 +13,7 @@ spring:
             - Method=GET, POST
           filters:
             - StripPrefix=3
-        - id: infomediaservice_usuario-application
+        - id: usuario-server
           uri: lb://usuario-server
           predicates:
             - Path=/api/v1/user/**
