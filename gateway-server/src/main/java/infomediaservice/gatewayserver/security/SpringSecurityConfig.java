@@ -23,8 +23,11 @@ public class SpringSecurityConfig {
 		.csrf().disable()
 		.build();*/
 		return http.authorizeExchange()
-				.pathMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
+				.pathMatchers("/api/v1/security/oauth/**").permitAll()
+				.pathMatchers(HttpMethod.GET, "/api/v1/usuarios/usuarios").permitAll()
+				.pathMatchers(HttpMethod.GET, "/api/v1/usuarios/usuarios/{id}").hasAnyRole("ADMIN", "USER")
 				.anyExchange().authenticated()
-				.and().csrf().disable().build();
+				.and().addFilterAt(authenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)
+				.csrf().disable().build();
 	}
 }

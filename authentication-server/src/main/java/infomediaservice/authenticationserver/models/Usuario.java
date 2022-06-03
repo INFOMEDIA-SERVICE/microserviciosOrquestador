@@ -7,17 +7,17 @@ public class Usuario {
 	private Long id;
 
 	private String username;
+	
+	private String password;
 
 	private List<Role> roles;
 
-	private List<Configuracion> configuraciones;
-
-	public List<Configuracion> getConfiguraciones() {
-		return configuraciones;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setConfiguraciones(List<Configuracion> configuraciones) {
-		this.configuraciones = configuraciones;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public List<Role> getRoles() {

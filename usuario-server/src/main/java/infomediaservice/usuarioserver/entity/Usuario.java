@@ -27,11 +27,22 @@ public class Usuario implements Serializable {
 
 	@Column(unique = true, length = 20)
 	private String username;
+	
+	@Column(length = 60)
+	private String password;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = {
 			@UniqueConstraint(columnNames = { "usuario_id", "role_id" }) })
 	private List<Role> roles;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public List<Role> getRoles() {
 		return roles;

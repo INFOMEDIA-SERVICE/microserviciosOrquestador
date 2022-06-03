@@ -34,12 +34,12 @@ public class AuthenticationManagerJwt implements ReactiveAuthenticationManager{
 					return Jwts.parserBuilder().setSigningKey(llave).build().parseClaimsJws(token).getBody();
 				})
 				.map(claims -> {
-					String username = claims.get("user_name", String.class);					
+					String username = claims.get("user_name", String.class);
 					List<String> roles = claims.get("authorities", List.class);
-					Collection<GrantedAuthority> authorities = roles.stream()
-							.map(SimpleGrantedAuthority::new)
+					Collection<GrantedAuthority> authorities = roles.stream().map(SimpleGrantedAuthority::new)
 							.collect(Collectors.toList());
 					return new UsernamePasswordAuthenticationToken(username, null, authorities);
+					
 				});
 	}
 
