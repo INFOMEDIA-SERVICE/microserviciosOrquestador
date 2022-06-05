@@ -1,6 +1,12 @@
-#Application Configuration
+#Application Configuration Vuplaform-server
 server:
   port: 8089
+  error:
+    include-message: always
+    include-stacktrace: never
+    include-binding-errors: always
+
+
 eureka:
   client:
     fetch-registry: true
@@ -16,6 +22,57 @@ spring:
     sampler:
       probability: 1.0
     base-url: http://localhost:9411/
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+##configuracion local
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/orquestador?useUnicode=yes&characterEncoding=UTF-8
+    username: postgres
+    password: 19950323
+##configuracion produccion
+  #datasource:
+    #platform: postgres
+    #url: jdbc:postgresql://skandia-orquestador.postgres.database.azure.com/vuplatform?useUnicode=yes&characterEncoding=UTF-8
+    #username: skandiadb@skandia-orquestador
+    #password: 5k4nd14db2020.
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+
+#Configuracion Demo
+#vuplaform:
+  #keyStoreFilename: key.p12
+  #keyStorePassword: Noviembre2020$
+  #keyAlias: skandia.registraduria.infomediaservice.online (sectigo rsa domain validation secure server ca)
+  #oktaUser: 2-830031632
+  #oktaPassword: Noviembre2020$
+  #endpointUrl: https://demo-servicesesb.datacredito.com.co/wss/dhws3/services/DHServicePlus
+  #usuario: 830031632
+  #clave: 26VON
+  #producto: 02
+
+
+#Configuracion Produccion
+vuplaform:
+  keyStoreFilename: key.p12
+  keyStorePassword: Noviembre2020$
+  keyAlias: skandia.registraduria.infomediaservice.online (sectigo rsa domain validation secure server ca)
+  oktaUser: 2-830031632
+  oktaPassword: Exp3r14n!
+  endpointUrl: https://servicesesb.datacredito.com.co/wss/dhws3/services/DHServicePlus
+  usuario: 830031632
+  clave: 26VON
+  producto: 02
+
 
 #port: ${PORT:0}
 resilience4j:
@@ -38,3 +95,5 @@ resilience4j:
     instances:
       informationContro:
         base-config: defecto
+
+

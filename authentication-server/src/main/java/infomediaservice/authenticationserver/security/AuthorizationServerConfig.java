@@ -1,5 +1,6 @@
 package infomediaservice.authenticationserver.security;
 
+import java.util.Arrays;
 import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,52 +15,64 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @RefreshScope
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
-	
-	@Autowired
-	private Environment env;
-	
-	@Autowired
-	private AuthenticationManager authenticationManager;
-	
-	@Override
-	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-		security.tokenKeyAccess("permitAll()")
-		.checkTokenAccess("isAuthenticated()");
-	}
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+    @Autowired
+    private Environment env;
 
-	@Override
-	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient(env.getProperty("config.security.oauth.client.id"))
-		.scopes(env.getProperty("config.security.oauth.client.scope"))
-		.authorizedGrantTypes(env.getProperty("config.security.oauth.client.grantype"), "refresh_token")
-		.accessTokenValiditySeconds(3600)
-		.refreshTokenValiditySeconds(3600);
-	}
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
-	@Override
-	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		
-		endpoints.authenticationManager(authenticationManager)
-		.tokenStore(tokenStore())
-		.accessTokenConverter(accessTokenConverter());
-	}
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-	@Bean
-	public JwtTokenStore tokenStore() {
-		return new JwtTokenStore(accessTokenConverter());
-	}
+    @Autowired
+    private InfoAdicionalToken infoAdicionalToken;
 
-	@Bean
-	public JwtAccessTokenConverter accessTokenConverter() {
-		JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
-		tokenConverter.setSigningKey(Base64.getEncoder().encodeToString(Base64.getEncoder().encode(env.getProperty("config.security.oauth.jwt.key").getBytes())));
-		return tokenConverter;
-	}
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        security.tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()");
+    }
+
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.inMemory()
+                .withClient(env.getProperty("config.security.oauth.client.id"))
+                .secret(passwordEncoder.encode(env.getProperty("config.security.oauth.client.secret")))
+                .scopes(env.getProperty("config.security.oauth.client.scope"))
+                .authorizedGrantTypes(env.getProperty("config.security.oauth.client.grantype"), "password", "refresh_token")
+                .accessTokenValiditySeconds(3600)
+                .refreshTokenValiditySeconds(3600);
+    }
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+
+        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoAdicionalToken, accessTokenConverter()));
+
+        endpoints.authenticationManager(authenticationManager)
+                .tokenStore(tokenStore())
+                .accessTokenConverter(accessTokenConverter())
+                .tokenEnhancer(tokenEnhancerChain);
+    }
+
+    @Bean
+    public JwtTokenStore tokenStore() {
+        return new JwtTokenStore(accessTokenConverter());
+    }
+
+    @Bean
+    public JwtAccessTokenConverter accessTokenConverter() {
+        JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
+        tokenConverter.setSigningKey(Base64.getEncoder().encodeToString(env.getProperty("config.security.oauth.jwt.key").getBytes()));
+        return tokenConverter;
+    }
 }

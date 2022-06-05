@@ -1,0 +1,38 @@
+[2m2022-06-04 22:11:46.357[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m.e.DevToolsPropertyDefaultsPostProcessor[0;39m [2m:[0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2m2022-06-04 22:11:46.830[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mc.c.c.ConfigServicePropertySourceLocator[0;39m [2m:[0;39m Fetching config from server at : http://localhost:8888
+[2m2022-06-04 22:11:47.663[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mc.c.c.ConfigServicePropertySourceLocator[0;39m [2m:[0;39m Located environment: name=vuplaform-server, profiles=[default], label=null, version=95c7696002ac8677e31c6b5e15efdfd3be2bcd55, state=null
+[2m2022-06-04 22:11:47.664[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mb.c.PropertySourceBootstrapConfiguration[0;39m [2m:[0;39m Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/INFOMEDIA-SERVICE/microserviciosOrquestador.git/config-data/local/vuplaform-server.yaml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/INFOMEDIA-SERVICE/microserviciosOrquestador.git/config-data/local/application.properties'}]
+[2m2022-06-04 22:11:47.679[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mi.v.VuplaformServerApplication          [0;39m [2m:[0;39m No active profile set, falling back to 1 default profile: "default"
+[2m2022-06-04 22:11:48.266[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m.s.d.r.c.RepositoryConfigurationDelegate[0;39m [2m:[0;39m Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2m2022-06-04 22:11:48.305[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m.s.d.r.c.RepositoryConfigurationDelegate[0;39m [2m:[0;39m Finished Spring Data repository scanning in 35 ms. Found 4 JPA repository interfaces.
+[2m2022-06-04 22:11:48.577[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.cloud.context.scope.GenericScope    [0;39m [2m:[0;39m BeanFactory id=f3b6742a-b262-39c4-a4cf-34760f504cb6
+[2m2022-06-04 22:11:49.181[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m:[0;39m Tomcat initialized with port(s): 8089 (http)
+[2m2022-06-04 22:11:49.186[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.apache.catalina.core.StandardService  [0;39m [2m:[0;39m Starting service [Tomcat]
+[2m2022-06-04 22:11:49.186[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36morg.apache.catalina.core.StandardEngine [0;39m [2m:[0;39m Starting Servlet engine: [Apache Tomcat/9.0.63]
+[2m2022-06-04 22:11:49.231[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/]      [0;39m [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[2m2022-06-04 22:11:49.231[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mw.s.c.ServletWebServerApplicationContext[0;39m [2m:[0;39m Root WebApplicationContext: initialization completed in 1541 ms
+[2m2022-06-04 22:11:49.365[0;39m [31mERROR [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.web.embedded.tomcat.TomcatStarter [0;39m [2m:[0;39m Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'webMvcMetricsFilter' defined in class path resource [org/springframework/boot/actuate/autoconfigure/metrics/web/servlet/WebMvcMetricsAutoConfiguration.class]: Unsatisfied dependency expressed through method 'webMvcMetricsFilter' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'simpleMeterRegistry' defined in class path resource [org/springframework/boot/actuate/autoconfigure/metrics/export/simple/SimpleMetricsExportAutoConfiguration.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourcePoolMetadataMeterBinder' defined in class path resource [org/springframework/boot/actuate/autoconfigure/metrics/jdbc/DataSourcePoolMetricsAutoConfiguration$DataSourcePoolMetadataMetricsConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourcePoolMetadataMeterBinder' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+[2m2022-06-04 22:11:49.373[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.apache.catalina.core.StandardService  [0;39m [2m:[0;39m Stopping service [Tomcat]
+[2m2022-06-04 22:11:49.404[0;39m [33m WARN [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mConfigServletWebServerApplicationContext[0;39m [2m:[0;39m Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+[2m2022-06-04 22:11:49.423[0;39m [32m INFO [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mConditionEvaluationReportLoggingListener[0;39m [2m:[0;39m 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2m2022-06-04 22:11:49.438[0;39m [31mERROR [vuplaform-server,,][0;39m [35m55814[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.d.LoggingFailureAnalysisReporter  [0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+

@@ -9,9 +9,6 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-    #profiles:
-    #active: "@profile.active@"
-
   cloud:
     config:
       fail-fast: true

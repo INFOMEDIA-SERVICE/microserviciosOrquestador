@@ -4,44 +4,44 @@ import java.util.List;
 
 public class Usuario {
 
-	private Long id;
+    private Long id;
 
-	private String username;
+    private String username;
 
-	private List<Role> roles;
+    private String password;
 
-	private List<Configuracion> configuraciones;
+    private List<Role> roles;
 
-	public List<Configuracion> getConfiguraciones() {
-		return configuraciones;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setConfiguraciones(List<Configuracion> configuraciones) {
-		this.configuraciones = configuraciones;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public List<Role> getRoles() {
-		return roles;
-	}
+    public List<Role> getRoles() {
+        return roles;
+    }
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
 }
