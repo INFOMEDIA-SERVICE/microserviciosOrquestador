@@ -18,10 +18,6 @@ public class SpringSecurityConfig {
 	public SecurityWebFilterChain configure(ServerHttpSecurity http) {
 		return http.authorizeExchange()
 				.pathMatchers("/api/v1/security/oauth/**").permitAll()
-				.pathMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
-				.pathMatchers(HttpMethod.POST, "/api/v1/**").permitAll()
-				.pathMatchers(HttpMethod.DELETE, "/api/v1/**").permitAll()
-				.pathMatchers(HttpMethod.PUT, "/api/v1/**").permitAll()
 				.pathMatchers(HttpMethod.GET, "/api/v1/user/usuarios/{id}").hasAnyRole("ADMIN", "USER")
 				.anyExchange().authenticated()
 				.and().addFilterAt(authenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)

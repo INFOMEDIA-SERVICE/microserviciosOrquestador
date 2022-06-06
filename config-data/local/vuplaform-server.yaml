@@ -65,7 +65,7 @@ spring:
 vuplaform:
   keyStoreFilename: key.p12
   keyStorePassword: Noviembre2020$
-  keyAlias: skandia.registraduria.infomediaservice.online (sectigo rsa domain validation secure server ca)
+  keyAlias: skandia.registraduria.infomediaservice.online
   oktaUser: 2-830031632
   oktaPassword: Exp3r14n!
   endpointUrl: https://servicesesb.datacredito.com.co/wss/dhws3/services/DHServicePlus
