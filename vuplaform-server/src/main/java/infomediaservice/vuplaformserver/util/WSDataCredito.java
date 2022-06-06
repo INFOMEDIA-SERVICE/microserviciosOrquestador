@@ -156,18 +156,6 @@ public class WSDataCredito {
                 "            <v1:producto>"+producto+"</v1:producto>\n" +
                 "            <v1:tipoIdentificacion>"+tipoIdentificacion+"</v1:tipoIdentificacion>\n" +
                 "            <v1:usuario>"+usuario+"</v1:usuario>\n" +
-                "            <!--Optional:-->\n" +
-                "            <v1:parametros>\n" +
-                "               <!--Zero or more repetitions:-->\n" +
-                "               <v1:parametro>\n" +
-                "                  <!--Optional:-->\n" +
-                "                  <v1:tipo>?</v1:tipo>\n" +
-                "                  <!--Optional:-->\n" +
-                "                  <v1:nombre>?</v1:nombre>\n" +
-                "                  <!--Optional:-->\n" +
-                "                  <v1:valor>?</v1:valor>\n" +
-                "               </v1:parametro>\n" +
-                "            </v1:parametros>\n" +
                 "         </v1:solicitud>\n" +
                 "      </v1:consultarHC2>\n" +
                 "   </soapenv:Body>\n" +

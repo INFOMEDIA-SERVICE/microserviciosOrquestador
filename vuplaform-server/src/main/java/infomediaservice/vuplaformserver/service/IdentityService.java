@@ -115,7 +115,7 @@ public class IdentityService {
         }catch (ValidationException e){
             //En caso de tener errores responder con error de validacion
             return new IdentityResponseData(processValidationException(e, request, transaction
-                    , timeNow, customer, ResultCode.ERROR_VALIDACION, 400, "Incorrect parameters"), 400);
+                    , timeNow, customer, ResultCode.ERROR_VALIDACION, 400, "Incorrect parameters", 1000), 400);
         }
 
         //Iniciar consulta datacretito experian
@@ -174,7 +174,7 @@ public class IdentityService {
                                 , null, null, null, null
                                 , customer, transaction, validation, timeNow, informe.naturalExtranjera.nacionalidad);
                     }else{
-                        throw new ValidationException("The response could not be processed: Person data not found");
+                        throw new ValidationException("Invalid person data");
                     }
 
                     //Guardar registros de Validacion e InfoCitizen
@@ -202,18 +202,18 @@ public class IdentityService {
             printErrorRequestResponse(request, hc2Response);
             //En caso de tener errores responder con error de validacion
             return new IdentityResponseData(processValidationException(e, request, transaction
-                    , timeNow, customer, ResultCode.ERROR_EN_SOLICITUD, 500
-                    , "Internal error"), 500);
+                    , timeNow, customer, ResultCode.ERROR_EN_SOLICITUD, 400
+                    , "Citizen information returned fail", 301), 400);
         }
 
     }
 
     //Guarda registro de de error de validacion y crea la respuesta adecuada
     private String processValidationException(Exception e, CitizenInformationRequest request, Transaction transaction
-            , LocalDateTime timeNow, VuCustomer customer, ResultCode resultCode, Integer httpCode, String msg){
+            , LocalDateTime timeNow, VuCustomer customer, ResultCode resultCode, Integer httpCode, String msg, Integer code){
         log.catching(e);
         ObjectNode errorResponse = objectMapper.createObjectNode();
-        errorResponse.put("code", 1000);
+        errorResponse.put("code", code);
         errorResponse.put("message", msg);
         errorResponse.put("reason", e.getMessage());
 
