@@ -19,7 +19,7 @@ public class SpringSecurityConfig {
 		return http.authorizeExchange()
 				.pathMatchers("/api/v1/security/oauth/**").permitAll()
 				.pathMatchers(HttpMethod.GET, "/api/v1/user/**").hasAnyRole("ADMIN")
-				.pathMatchers(HttpMethod.POST, "/api/v1/vuplaform/**").hasAnyRole( "ADMIN","CLIENT")
+				.pathMatchers(HttpMethod.POST, "/api/v1/vuplaform/**").hasAnyRole( "ADMIN","USER")
 				.anyExchange().authenticated()
 				.and().addFilterAt(authenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)
 				.csrf().disable().build();
