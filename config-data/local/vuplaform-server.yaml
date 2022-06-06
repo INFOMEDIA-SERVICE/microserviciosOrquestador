@@ -41,6 +41,7 @@ spring:
     #password: 5k4nd14db2020.
   jpa:
     hibernate:
+      ddl-auto: update
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
